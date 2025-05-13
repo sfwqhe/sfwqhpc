@@ -194,8 +194,8 @@ parallelizing quantum circuit execution by decomposing a four-qubit circuit into
 
     <section>
         <h3> <font color="blue">A Scalable Software Framework for Distributed Quantum-HPC Integration: Resource-Oriented Orchestration and Workflow Optimization - Kuan-Cheng (Louis) Chen (Imperial College London)</font> 
-	    <p>Co-authors: Felix Burt and Kin K. Leung </p></h3>
-	    <ol>
+	  <ol><p>Co-authors: Felix Burt and Kin K. Leung </p></h3>
+	   
         <p> 
 The convergence of quantum computing and high-performance computing (HPC) presents a unique opportunity to accelerate scientific discovery through hybrid quantum-classical workflows. However, the integration of quantum processing units (QPUs) into distributed HPC environments remains hindered by architectural heterogeneity, limited qubit connectivity, and the absence of unified software abstractions for resource coordination. In this work, we propose a scalable software framework for orchestrating distributed quantum-HPC workflows, with a focus on dynamic resource management, entanglement-aware scheduling, and workload decomposition across quantum and classical compute nodes. The framework introduces a unified resource abstraction layer, a containerized microservice architecture, and a policy-driven scheduler capable of adapting to latency, coherence constraints, and QPU topology. We demonstrate the effectiveness of the system on representative hybrid workloads, including variational quantum eigensolvers and quantum approximate optimization algorithms, deployed over simulated and real-world HPC environments. Our results show significant improvements in execution efficiency, resource utilization, and scalability compared to baseline orchestration models. This framework provides a foundational step toward operationally viable quantum-HPC integration and lays the groundwork for future quantum-enabled HPC systems. </p>
         <p> </p> </ol>
@@ -209,8 +209,8 @@ The convergence of quantum computing and high-performance computing (HPC) presen
 
     <section>
         <h3> <font color="blue">Assessing the Variational Quantum Linear Solver for Fluid Dynamics on a Hybrid Quantum-HPC Stack - Muralikrishnan G. Meena (ORNL)</font>
-	    <p>Co-authors: Eduardo Antonio Coello Pérez, Amir Shehata, Seongmin Kim, and In-Saeng Suh</p></h3>
-	    <ol>
+	     <ol> <p>Co-authors: Eduardo Antonio Coello Pérez, Amir Shehata, Seongmin Kim, and In-Saeng Suh</p></h3>
+	  
         <p> Abstract: Fluid dynamics remains one of the most demanding challenges in scientific computing, with the solution of large linear systems forming a core component of most numerical methods. Recent advances in quantum algorithms for linear systems offer a promising direction for accelerating such computations. However, the deep and complex circuits required by many quantum algorithms limit their practical use on current quantum hardware. The Variational Quantum Linear Solver (VQLS) presents a viable alternative for near-term quantum devices (NISQ), and initial efforts have explored its application to select fluid dynamics problems.
 </p>
 	<p>In this work, we evaluate the use of VQLS for canonical fluid dynamics problems, aiming to identify pathways for generalizing its implementation across a broader class of systems. We analyze the impact of various circuit ansatz and classical optimizers on solution quality and convergence behavior. Furthermore, we assess the algorithm’s feasibility within a hybrid quantum–high-performance computing (HPC) framework by porting it to QFw, a state-of-the-art quantum-HPC software stack. Our performance study explores practical scalability, identifies current bottlenecks, and provides insights into integrating VQLS into hybrid workflows. These results establish a foundation for extending VQLS to more complex fluid dynamics applications and advancing hybrid quantum-HPC strategies. </p>
@@ -220,8 +220,8 @@ The convergence of quantum computing and high-performance computing (HPC) presen
 
     <section>
         <h3> <font color="blue">An Early Investigation of the HHL Quantum Linear Solver for Scientific Applications - Muqing Zheng (PNNL)</font>
-	    <p>Co-authors: Chenxu Liu, Samuel Stein, Xiangyu Li, Johannes Mülmenstädt, Yousu Chen, and Ang Li</p></h3>
-	<ol>
+	 <ol>   <p>Co-authors: Chenxu Liu, Samuel Stein, Xiangyu Li, Johannes Mülmenstädt, Yousu Chen, and Ang Li</p></h3>
+	
         <p> We explore using the Harrow-Hassidim-Lloyd (HHL) algorithm to address scientific and engineering problems through quantum computing utilizing the NWQSim simulation package on high-performance computing. Focusing on domains such as power-grid management and heat transfer problems, we demonstrate the correlations of the precision of quantum phase estimation, along with various properties of coefficient matrices, on the final solution and quantum resource cost in iterative and non-iterative numerical methods such as Newton-Raphson method and finite difference method, as well as their impacts on quantum error correction costs using Microsoft Azure Quantum resource estimator. We conclude the exponential resource cost from quantum phase estimation before and after quantum error correction and illustrate a potential way to reduce the demands on physical qubits. This work lays down a preliminary step for future investigations, urging a closer examination of quantum algorithms’ scalability and efficiency in domain applications.</p>
         <p> </p>
 	   </ol> 
