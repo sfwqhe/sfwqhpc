@@ -166,21 +166,22 @@ quantumX can also model crosstalk effects. By incorporating features such as “
 Such predictive models can benefit schedulers i.e. for each queued quantum or hybrid job, quantumX can predict runtime and crosstalk risk based on job features and current device state. The scheduler (BOSER/SLURM) uses these aligned forecasts to make smarter placement and ordering decisions. In simulations on real job traces, quantumX -driven scheduling reduced average turnaround time by over 70% compared to heuristic baselines. This cross-domain prediction is integrated into the scheduling loop: the scheduler queries ModelX  (alignment + residual modules) for each candidate schedule, scoring schedules by predicted execution time and crosstalk cost, then selects the minimal-cost option. 
 
 In summary, quantumX applies a transfer learning approach to predict runtime and crosstalk behavior across heterogeneous quantum-classical systems. Unlike existing models that require retraining for each hardware platform or rely on architecture-specific heuristics, quantumX generalizes across domains using few-shot adaptation. quantumX can be integrated into middleware frameworks such as Pilot-Quantum to enhance their ability to make noise- and resource-aware decisions more accurately. By linking performance modeling with device-level noise characteristics, quantumX provides a foundation for effective orchestration in the noisy intermediate-scale quantum regime. 
+<ol>
+    <p> 1. Pradeep Mantha, Florian J. Kiwit, Nishant Saurabh, Shantenu Jha, and Andre Luckow. 2024. Pilot-Quantum: A Quantum-HPC Middleware for Resource, Workload and Task Management. arXiv preprint arXiv:2412.18519 </p>
 
-    1. Pradeep Mantha, Florian J. Kiwit, Nishant Saurabh, Shantenu Jha, and Andre Luckow. 2024. Pilot-Quantum: A Quantum-HPC Middleware for Resource, Workload and Task Management. arXiv preprint arXiv:2412.18519 
+    <p>2. Mahdi Rezaei, Alexey Salnikov. PCT 2025. A Machine Learning-Based Plugin for SLURM: Improving Job Scheduling through Ensemble Learning.  </p>
 
-    2. Mahdi Rezaei, Alexey Salnikov. PCT 2025. A Machine Learning-Based Plugin for SLURM: Improving Job Scheduling through Ensemble Learning.  
+    <p>3. Kyrian C. Adimora and Hongyang Sun. 2024. GNN-RL: An Intelligent HPC Resource Scheduler. In SC24: The International Conference for High Performance Computing, Networking, Storage, and Analysis, November 17–22, 2024, Atlanta, GA, USA. Poster. </p>
 
-    3. Kyrian C. Adimora and Hongyang Sun. 2024. GNN-RL: An Intelligent HPC Resource Scheduler. In SC24: The International Conference for High Performance Computing, Networking, Storage, and Analysis, November 17–22, 2024, Atlanta, GA, USA. Poster. 
+    <p>4. Menear, Kevin, Ambarish Nag, Jordan Perr-Sauer, Monte Lunacek, Kristi Potter, and Dmitry Duplyakin. 2023. Mastering HPC Runtime Prediction: From Observing Patterns to a Methodological Approach. In Practice and Experience in Advanced Research Computing (PEARC '23), July 23–27, 2023, Portland, OR, USA. ACM, New York, NY, USA, 11 pages. https://doi.org/10.1145/3569951.3593598. </p>
 
-    4. Menear, Kevin, Ambarish Nag, Jordan Perr-Sauer, Monte Lunacek, Kristi Potter, and Dmitry Duplyakin. 2023. Mastering HPC Runtime Prediction: From Observing Patterns to a Methodological Approach. In Practice and Experience in Advanced Research Computing (PEARC '23), July 23–27, 2023, Portland, OR, USA. ACM, New York, NY, USA, 11 pages. https://doi.org/10.1145/3569951.3593598. 
+   <p> 5. Mingyu Wu, Lin Gan, and Haohuan Fu. 2023. CAMEL: Crosstalk-Aware Mapping and gatE scheduLing for Frequency-Tunable Quantum Chips. arXiv preprint arXiv:2311.18160. </p>
 
-    5. Mingyu Wu, Lin Gan, and Haohuan Fu. 2023. CAMEL: Crosstalk-Aware Mapping and gatE scheduLing for Frequency-Tunable Quantum Chips. arXiv preprint arXiv:2311.18160. 
+    <p>6. Ruizhe Li, Anand Venkat, and Yunong Shi. 2022. QuEst: Graph Transformer for Quantum Circuit Reliability Estimation. arXiv preprint arXiv:2210.16724. </p>
 
-    6. Ruizhe Li, Anand Venkat, and Yunong Shi. 2022. QuEst: Graph Transformer for Quantum Circuit Reliability Estimation. arXiv preprint arXiv:2210.16724. 
-
-    7. A. Dey, N. Antony, A. Dhakal, K. Thopalli, J. Thigarajan, T. Patki, T. Scogland, J. S. Yeom, and T. Z. Islam, “ModelX: A Novel Transfer Learning Approach Across Heterogeneous Datasets”. The 34th ACM Symposium on High-Performance Parallel and Distributed Computing (HPDC), 2025 (Accepted). 
-        <p> </p> 
+    <p>7. A. Dey, N. Antony, A. Dhakal, K. Thopalli, J. Thigarajan, T. Patki, T. Scogland, J. S. Yeom, and T. Z. Islam, “ModelX: A Novel Transfer Learning Approach Across Heterogeneous Datasets”. The 34th ACM Symposium on High-Performance Parallel and Distributed Computing (HPDC), 2025 (Accepted). </p>
+</ol>
+	<p> </p> 
     </section>
 
     <section>
