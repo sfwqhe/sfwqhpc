@@ -144,12 +144,42 @@ Applications - <font color="blue"> Muqing Zheng (PNNL) </font> </dt>
     <section>
         <h3> Q-IRIS: The Evolution of the IRIS Task-Based Runtime to Enable Classical-Quantum Workflows - Elaine Wong (ORNL)</h3>
         <p> </p>
+	    
         <p> </p> 
     </section>
 
     <section>
         <h3> QUANTUMX: A Few-Shot-Learning Approach for Quantum Performance Modeling in HPC - Arunavo Dey (Texas State Univ.) </h3>
         <p> </p>
+	    Hybrid quantum systems integrate quantum subsystems, such as QPUs, with classical high-performance computing (HPC) components including CPUs and GPUs. Quantum processors execute quantum-specific subroutines, while classical devices manage control flow, preprocessing, and aggregation. Such task partitioning is critical since current quantum hardware remains constrained by qubit count, quantum state, high gate and readout error rates. Hence, classical processors such as CPUs and GPUs are used to perform computational tasks that scale with problem size and memory requirements. Mixed hybrid systems that couple both quantum–classical systems and multi-qubit-type hybrid systems are increasingly being explored in research lately. 
+
+However, coupling these systems introduces a new kind of complexity. It’s not just about assigning tasks—it’s about predicting how delays and noise ripple across the stack. It is not enough to simply assign tasks based on hardware capabilities. Performance also depends on how delays and errors propagate across the system. On the quantum side, phase noise—such as ZZ crosstalk—can degrade fidelity even when qubits are idle, due to unintended interactions with neighboring qubits. On the classical side, memory-bound GPU stalls or CPU scheduling delays can block or desynchronize quantum operations. These effects are not isolated; they interact. As a result, total system throughput not only depends on task placement, but also how well those interactions can be modeled. While middleware such as Pilot-Quantum [1] orchestrates execution across CPUs, GPUs, and QPUs, their effectiveness depends on accurate runtime prediction. 
+
+To aid such job orchestrators in reducing queue times and improving runtime predictions, many recent works have investigated machine learning (ML) methods. For instance, BOSER [2] integrates ensemble models (e.g., XGBoost, LightGBM) into SLURM to forecast job durations, while GNN-RL [3] uses graph neural networks trained on historical job graphs to adapt to changing workloads. For quantum-specific scheduling, particularly under ZZ crosstalk, existing approaches combine hardware calibration, circuit timing heuristics, and ML. Lu et al. [5] introduce a physics-informed method for crosstalk-aware mapping in frequency-tunable qubits. Wang et al. [6] employ a graph transformer to predict circuit fidelity based on gate-level noise annotations. 
+
+However, these methods face two limitations. First, they require extensive training data and frequent retraining as workloads drift—often using hundreds or thousands of historical entries [4]. Second, these models do not generalize well across architectures. That is, a model trained on one platform typically underperforms on another. For instance, QuEst [6] lacks explicit crosstalk features and is trained separately for each device backend (e.g., IBM Geneva, IBM Hanoi), limiting its portability. To fill this gap, one option is to retrain performance models for every platform and workload from scratch. However, such a solution can be expensive, especially as new hardware emerges every six months. A more scalable alternative is to adopt few-shot transfer learning. We propose quantumX, a framework that can adapt across CPUs, GPUs, and QPUs using minimal support data to jointly predict runtime and crosstalk risks 
+
+Specifically, we propose quantumX based on a recent work by Dey et al. called ModelX [7]. quantumX aligns heterogeneous performance features and learns a base model on source data, then fits a lightweight residual model using only a few target-domain samples. For example, a runtime model trained on QPU data from Vendor A can inform predictions on a QPU on vendor B by aligning features (e.g. qubit count, circuit depth) and then scaling appropriately. quantumX’s few-shot adaptation means only ~10 measured runs on the new device are needed to calibrate its residual component. In practice this yields more accurate runtime and resource forecasts than naïve heuristics, enabling better scheduling decisions. Unlike prior ML schedulers that require thousands of examples and retraining when hardware changes, quantumX handles heterogeneous feature sets with no feature matching needed, transferring common performance patterns across devices. 
+
+quantumX can also model crosstalk effects. By incorporating features such as “simultaneously active qubit pairs,” “spectator qubit proximities,” or “concurrent gate counts,” quantumX aligns these high-level inputs across devices. When adapting from Device A to B, the base model (trained on many calibration runs of A) captures the general dependence of performance on parallel gate activity, while the few-shot residual learns device-specific ZZ offsets. For instance, executing a handful of parallel-circuit benchmarks on Device B lets the residual model quantify extra error from its unique ZZ coupling. This calibrated model then predicts the error or fidelity of larger circuits on B without exhaustive characterization. 
+
+Such predictive models can benefit schedulers i.e. for each queued quantum or hybrid job, quantumX can predict runtime and crosstalk risk based on job features and current device state. The scheduler (BOSER/SLURM) uses these aligned forecasts to make smarter placement and ordering decisions. In simulations on real job traces, quantumX -driven scheduling reduced average turnaround time by over 70% compared to heuristic baselines. This cross-domain prediction is integrated into the scheduling loop: the scheduler queries ModelX  (alignment + residual modules) for each candidate schedule, scoring schedules by predicted execution time and crosstalk cost, then selects the minimal-cost option. 
+
+In summary, quantumX applies a transfer learning approach to predict runtime and crosstalk behavior across heterogeneous quantum-classical systems. Unlike existing models that require retraining for each hardware platform or rely on architecture-specific heuristics, quantumX generalizes across domains using few-shot adaptation. quantumX can be integrated into middleware frameworks such as Pilot-Quantum to enhance their ability to make noise- and resource-aware decisions more accurately. By linking performance modeling with device-level noise characteristics, quantumX provides a foundation for effective orchestration in the noisy intermediate-scale quantum regime. 
+
+    1. Pradeep Mantha, Florian J. Kiwit, Nishant Saurabh, Shantenu Jha, and Andre Luckow. 2024. Pilot-Quantum: A Quantum-HPC Middleware for Resource, Workload and Task Management. arXiv preprint arXiv:2412.18519 
+
+    2. Mahdi Rezaei, Alexey Salnikov. PCT 2025. A Machine Learning-Based Plugin for SLURM: Improving Job Scheduling through Ensemble Learning.  
+
+    3. Kyrian C. Adimora and Hongyang Sun. 2024. GNN-RL: An Intelligent HPC Resource Scheduler. In SC24: The International Conference for High Performance Computing, Networking, Storage, and Analysis, November 17–22, 2024, Atlanta, GA, USA. Poster. 
+
+    4. Menear, Kevin, Ambarish Nag, Jordan Perr-Sauer, Monte Lunacek, Kristi Potter, and Dmitry Duplyakin. 2023. Mastering HPC Runtime Prediction: From Observing Patterns to a Methodological Approach. In Practice and Experience in Advanced Research Computing (PEARC '23), July 23–27, 2023, Portland, OR, USA. ACM, New York, NY, USA, 11 pages. https://doi.org/10.1145/3569951.3593598. 
+
+    5. Mingyu Wu, Lin Gan, and Haohuan Fu. 2023. CAMEL: Crosstalk-Aware Mapping and gatE scheduLing for Frequency-Tunable Quantum Chips. arXiv preprint arXiv:2311.18160. 
+
+    6. Ruizhe Li, Anand Venkat, and Yunong Shi. 2022. QuEst: Graph Transformer for Quantum Circuit Reliability Estimation. arXiv preprint arXiv:2210.16724. 
+
+    7. A. Dey, N. Antony, A. Dhakal, K. Thopalli, J. Thigarajan, T. Patki, T. Scogland, J. S. Yeom, and T. Z. Islam, “ModelX: A Novel Transfer Learning Approach Across Heterogeneous Datasets”. The 34th ACM Symposium on High-Performance Parallel and Distributed Computing (HPDC), 2025 (Accepted). 
         <p> </p> 
     </section>
 
