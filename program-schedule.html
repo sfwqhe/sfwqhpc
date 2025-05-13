@@ -143,13 +143,18 @@ Applications - <font color="blue"> Muqing Zheng (PNNL) </font> </dt>
 
     <section>
         <h3> Q-IRIS: The Evolution of the IRIS Task-Based Runtime to Enable Classical-Quantum Workflows - Elaine Wong (ORNL)</h3>
-        <p> </p>
-	    
-        <p> </p> 
+    <ol>
+        <p> Heterogeneous systems are ubiquitous and are growing to include even more diverse 
+paradigms, such as quantum computing. This talk will describe an asynchronous task-based runtime solution that can encapsulate both classical and quantum computing environments in the heterogeneous execution paradigm by exploring a few integration possibilities between the task-based runtime IRIS, and the Quantum Intermediate Representation Execution Engine (QIR-EE). The need for asynchronous task-based execution is motivated by examples that require the coexistence of classical and quantum computing hardware. To show a proof-of-concept for motivating future study, we describe the principles of integrating quantum runtimes with a task-based runtime and demonstrate its capability of
+parallelizing quantum circuit execution by decomposing a four-qubit circuit into a collection of smaller circuits, which lowers the quantum simulation load during execution. We hope that this will further highlight challenges that we would need to overcome to make such a solution effectively scalable while simultaneously capturing classical-quantum and quantum-quantum interactions.</p>
+    </ol>
+	    <p> </p>     
+      
     </section>
 
     <section>
         <h3> QUANTUMX: A Few-Shot-Learning Approach for Quantum Performance Modeling in HPC - Arunavo Dey (Texas State Univ.) </h3>
+    <ol>
         <p> </p>
 <p> Hybrid quantum systems integrate quantum subsystems, such as QPUs, with classical high-performance computing (HPC) components including CPUs and GPUs. Quantum processors execute quantum-specific subroutines, while classical devices manage control flow, preprocessing, and aggregation. Such task partitioning is critical since current quantum hardware remains constrained by qubit count, quantum state, high gate and readout error rates. Hence, classical processors such as CPUs and GPUs are used to perform computational tasks that scale with problem size and memory requirements. Mixed hybrid systems that couple both quantum–classical systems and multi-qubit-type hybrid systems are increasingly being explored in research lately. </p>
 
@@ -167,7 +172,6 @@ Applications - <font color="blue"> Muqing Zheng (PNNL) </font> </dt>
 
 <p> In summary, quantumX applies a transfer learning approach to predict runtime and crosstalk behavior across heterogeneous quantum-classical systems. Unlike existing models that require retraining for each hardware platform or rely on architecture-specific heuristics, quantumX generalizes across domains using few-shot adaptation. quantumX can be integrated into middleware frameworks such as Pilot-Quantum to enhance their ability to make noise- and resource-aware decisions more accurately. By linking performance modeling with device-level noise characteristics, quantumX provides a foundation for effective orchestration in the noisy intermediate-scale quantum regime. </p>
 	
-<ol>
     <p> 1. Pradeep Mantha, Florian J. Kiwit, Nishant Saurabh, Shantenu Jha, and Andre Luckow. 2024. Pilot-Quantum: A Quantum-HPC Middleware for Resource, Workload and Task Management. arXiv preprint arXiv:2412.18519 </p>
 
     <p>2. Mahdi Rezaei, Alexey Salnikov. PCT 2025. A Machine Learning-Based Plugin for SLURM: Improving Job Scheduling through Ensemble Learning.  </p>
