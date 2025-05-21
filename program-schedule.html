@@ -116,7 +116,7 @@ Applications - <font color="blue"> Muqing Zheng (PNNL) </font> </dt>
 		    <!-- TBD  Hybrid Quantum-HPC Scientific Workflows - <font color="blue">  ???  </font>  </a></li>  </dt> -->
 	<p></p>
 	<p> </p>
-            <dt>02:30PM - 02:55PM: Regular Talk 6 - TBD   </font> </dt>
+            <dt>02:30PM - 02:55PM: Regular Talk 6 - Hybrid Quantum-Classical Architecture for Large Language Model Fine-Tuning: Toward Hybrid CPU + GPU + QPU - 	<font color="blue"> Claudio Girotto (IonQ) </font> </dt>
 	<!-- TBD  Hybrid Quantum-HPC Scientific Workflows - <font color="blue">  ???  </font>  </a></li>  </dt> -->
 	<p></p>
 	    <dt>02:55PM - 03:10PM: Coffee Break </dt>
@@ -250,6 +250,19 @@ The convergence of quantum computing and high-performance computing (HPC) presen
 	</p>
         <p> </p></ol> 
     </section>
+
+<section>
+        <h3> <font color="blue"> Hybrid Quantum-Classical Architecture for Large Language Model Fine-Tuning: Toward Hybrid CPU + GPU + QPU </font> - Claudio Girotto (IonQ)
+	<ol>   <p>Co-authors: Erica Stump </p></h3> </ol>
+	<ol>
+        <p> We introduce a hybrid quantum-classical architecture for language model fine-tuning, and present a screening study exploring the effects of varying hyperparameters. The research investigates how prediction task accuracy scales with both quantum circuit depth and the number of qubits (or circuit width). We observe a notable trend of increased accuracy with more qubits, while circuit depth shows a width-dependent optimal point that seems to balance expressive power and trainability.
+To overcome the limitations of simulating complex-valued statevectors on GPUs, which restricts both the number of qubits and circuit depth, we devised a design-of-experiment approach. This approach aims to reach those hyperparameter settings beyond the capabilities of our private cluster by using supercomputers (e.g., ORNL Frontier).
+The final step is to validate these findings through performing both inference and training on actual quantum hardware at circuit depth and qubit count beyond what is classically simulable on supercomputers. Because our algorithm is hybrid in nature, tight integration of the QPU with the CPU and GPU for classical processing during end-to-end training would yield speed and energy benefits, especially beyond these simulable limits.
+	</p>
+        <p> </p></ol> 
+    </section>
+
+
 
     <section>
         <h3> <font color="blue">Overview of Distributed Variational Optimization Algorithms on Large-scale Quantum-HPC Ecosystems </font>- Seongmin Kim (ORNL)</h3>
